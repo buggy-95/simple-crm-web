@@ -17,6 +17,24 @@ const devConfig = {
     hot: true,
     historyApiFallback: true,
   },
+  module: {
+    rules: [
+      {
+        test: /\.less$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+        ],
+      }, {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+    ],
+  },
 };
 
 module.exports = merge(common, devConfig);
