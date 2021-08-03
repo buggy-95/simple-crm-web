@@ -5,6 +5,19 @@ const path = require('path');
 
 const common = require('./webpack.common');
 
+const cssLoaders = [
+  'css-loader',
+  {
+    loader: 'postcss-loader',
+    options: {
+      postcssOptions: {
+        plugins: ['postcss-preset-env'],
+      },
+    },
+  },
+  'less-loader',
+];
+
 const prodConfig = {
   mode: 'production',
   devtool: 'source-map',
@@ -18,6 +31,20 @@ const prodConfig = {
     // 'asset/resource' 模块输出目录
     assetModuleFilename: 'images/[name][ext][query]',
   },
+  module: {
+    rules: [
+      {
+        test: /\.less$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          ...cssLoaders,
+        ],
+      }, {
+        test: /\.css$/,
+        use: cssLoaders,
+      },
+    ],
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
@@ -26,14 +53,22 @@ const prodConfig = {
     new CopyPlugin({
       patterns: [
         {
-          from: 'public/**/*',
+          from: 'public',
+          noErrorOnMissing: true,
           globOptions: {
             dot: true,
             gitignore: true,
-            ignore: ['index.html'],
+            ignore: ['**/index.html'],
           },
         },
       ],
     }),
   ],
-}
+  externalsType: 'script',
+  externals: {
+    react: ['https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.production.min.js', 'React'],
+    'react-dom': ['https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js', 'ReactDOM'],
+  },
+};
+
+module.exports = merge(common, prodConfig);
