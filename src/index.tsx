@@ -1,17 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import 'normalize.css';
 
 import 'style/index.less';
 import App from 'pages/App';
+import Layout from 'components/Layout';
 
 const Root = () => {
-  return (
-    <div className="app">
-      <p>app</p>
-      {/* <img src="/images/joge.jpeg" alt="joge" /> */}
-      <App />
-    </div>
-  );
+  return (<Layout />);
 };
 
 render(

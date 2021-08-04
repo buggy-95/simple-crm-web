@@ -1,20 +1,22 @@
 {
   "include": ["src/**/*"],
+  "files": ["./src/index.tsx"],
   "compilerOptions": {
+    "moduleResolution": "node",
     "jsx": "react",
     "strict": true,
     "sourceMap": true,
-    "target": "ESNext",
+    "target": "ES6",
     "types": ["webpack-env"],
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "src/*": ["./src/*"]
+      // "src/*": ["./src/*"]
     },
     "allowSyntheticDefaultImports": true,
     "lib": [
+      "ES6",
       "DOM",
-      "DOM.Iterable",
-      "ESNext"
+      "DOM.Iterable"
     ]
   }
 }
