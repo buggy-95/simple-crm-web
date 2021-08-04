@@ -1,6 +1,6 @@
 import React from 'react';
 
-import 'style/layout/index.less';
+import 'style/layout.less';
 import Nav from './Nav';
 import Menu from './Menu';
 import Body from './Body';

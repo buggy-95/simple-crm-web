@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import 'normalize.css';
+// import 'normalize.css';
 
 import 'style/index.less';
 import App from 'pages/App';
