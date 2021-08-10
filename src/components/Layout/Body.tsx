@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 
-import Bread from './Bread';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import { login, logout } from 'app/store/systemSlice';
 
@@ -21,16 +20,11 @@ const Body = () => {
   };
 
   return (
-    <div className="l-body-container">
-      <div className="l-body">
-        <Bread />
-        <div className="l-page">
-          <p>logined: { systemState.logined.toString() }</p>
-          <button onClick={handleLogin}>test</button>
-          <div className="test"></div>
-        </div>
-      </div>
-    </div>
+    <main className="l-body">
+      <p>logined: { systemState.logined.toString() }</p>
+      <button onClick={handleLogin}>test</button>
+      <div className="test"></div>
+    </main>
   );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Menu = () => {
   return (
-    <div className="l-menu"></div>
+    <aside className="l-menu"></aside>
   );
 };
 
